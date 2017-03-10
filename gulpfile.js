@@ -10,10 +10,10 @@ var watch = require('gulp-watch');
 var exec = require('child_process').exec;
 
 gulp.task('runserver', function(){
-	var proc = exec('python3 manage.py runserver', function (err, stdout, stderr) {
-    console.log(stdout);
-    console.log(stderr);
-  });
+	var proc = exec('python3 manage.py runserver', function(err, stdout, stderr){
+		console.log(stdout);
+		console.log(stderr);
+	});
 });
 
 gulp.task('cssclean', function(){
@@ -35,7 +35,7 @@ gulp.task('csscompile', ['cssclean'], function(){
 
 gulp.task('develop', ['csscompile', 'runserver'], function(){
 	browserSync.init({
-		proxy:  {
+		proxy: {
 			target: 'http://127.0.0.1:8000',
 		},
 		open: false,
