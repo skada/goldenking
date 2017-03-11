@@ -15,7 +15,7 @@ var exec = require('child_process').exec;
 
 // spustí server
 gulp.task('runserver', function(){
-	var proc = exec('python3 manage.py runserver', function(err, stdout, stderr){
+	var proc = exec('python manage.py runserver', function(err, stdout, stderr){
 		console.log(stdout);
 		console.log(stderr);
 	});
