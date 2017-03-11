@@ -1,19 +1,30 @@
+{% extends '_base.html' %}
+
 {% load static %}
 
-<form method=post>
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type=submit>odeslat</button>
-</form>
+{% block all %}
 
-<h1>Charity</h1>
-{% for fund in charity_funds %}
-{{ fund.name }} celkem dostane {{ fund.total }} CZK. <br />
-{% endfor %}
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">odeslat</button>
+    </form>
 
-<h1>Dary</h1>
-{% for donation in donations %}
-{{ donation.name }} dal {{ donation.amount }} CZK pro {{ donation.charity_fund.name }}<br />
-{% endfor %}
+    <h1>Charity</h1>
 
-<img src="{% static 'goodjob.png' %}" />
+    {% for fund in charity_funds %}
+        <h2>
+            {{ fund.name }}:
+            <b>{{ fund.total }}</b> CZK.
+        </h2>
+    {% endfor %}
+
+    <h1>Dary</h1>
+    {% for donation in donations %}
+        {{ donation.name }} dal {{ donation.amount }} CZK pro {{ donation.charity_fund.name }}
+        <br>
+    {% endfor %}
+
+    <img src="{% static 'goodjob.png' %}" />
+
+{% endblock %}
